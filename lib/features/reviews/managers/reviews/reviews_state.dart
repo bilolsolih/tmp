@@ -14,10 +14,7 @@ class ReviewsState extends Equatable {
     required this.status,
   });
 
-  ReviewsState copyWith({
-    ReviewsRecipeModel? recipeModel,
-    ReviewsStatus? status,
-  }) {
+  ReviewsState copyWith({ReviewsRecipeModel? recipeModel, ReviewsStatus? status}) {
     return ReviewsState(
       recipeModel: recipeModel ?? this.recipeModel,
       status: status ?? this.status,

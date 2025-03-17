@@ -1,12 +1,25 @@
 import 'package:dio/dio.dart';
+import 'package:recipe/data/models/create_review_model.dart';
 
 class ApiClient {
   final Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'http://192.168.1.80/api/v1',
+      baseUrl: 'http://10.10.3.155/api/v1',
       validateStatus: (status) => true,
     ),
   );
+
+  Future<bool> createReview(CreateReviewModel model) async {
+    final response = await dio.post(
+      '/reviews/create',
+      options: Options(
+        headers: {
+          "Authorization":
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtaWx5QGdtYWlsLmNvbSIsImp0aSI6Ijg3MTUxYTRlLTViMmYtNGViYy1hYmU4LTQzZmExYzM2YzZlNSIsInVzZXJpZCI6IjUiLCJleHAiOjE4MzY5MTc5MjcsImlzcyI6ImxvY2FsaG9zdCIsImF1ZCI6ImF1ZGllbmNlIn0.UY2a5qRKT2dUfNq6BsBT6rvxQg-medYeEoAb24fPSG0",
+        },
+      ),
+    );
+  }
 
   Future<List<dynamic>> fetchCategories() async {
     var response = await dio.get('/categories/list');
@@ -84,11 +97,10 @@ class ApiClient {
 
   Future<Map<String, dynamic>> fetchRecipeForReviews(int recipeId) async {
     var response = await dio.get('/recipes/reviews/detail/$recipeId');
-    if (response.statusCode == 200){
-      return Map<String, dynamic>.from(response.data);
-    } else{
+    if (response.statusCode == 200) {
+      return response.data;
+    } else {
       throw Exception("recipes/reviews/detail/$recipeId so'rovimiz xato ketti!");
     }
-
   }
 }

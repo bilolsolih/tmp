@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/features/common/common.dart';
-import 'package:recipe/features/reviews/managers/reviews_bloc.dart';
-import 'package:recipe/features/reviews/managers/reviews_state.dart';
-import 'package:recipe/features/reviews/pages/reviews_recipe_item.dart';
+import 'package:recipe/features/reviews/managers/reviews/reviews_bloc.dart';
+import 'package:recipe/features/reviews/widgets/reviews_recipe_item.dart';
+
+import '../managers/reviews/reviews_state.dart';
 
 class ReviewsView extends StatelessWidget {
   const ReviewsView({super.key});

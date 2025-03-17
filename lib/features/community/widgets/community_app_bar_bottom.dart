@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/utils/colors.dart';
-import 'package:recipe/features/recipe_detail/widgets/recipe_text_button_container.dart';
+import 'package:recipe/features/common/widgets/recipe_text_button_container.dart';
 
 import '../manager/community_cubit.dart';
 

@@ -6,8 +6,10 @@ import 'reviews_state.dart';
 part 'reviews_events.dart';
 
 class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
-  ReviewsBloc({required RecipeRepository recipeRepo, required int recipeId})
-      : _recipeRepo = recipeRepo,
+  ReviewsBloc({
+    required RecipeRepository recipeRepo,
+    required int recipeId,
+  })  : _recipeRepo = recipeRepo,
         super(
           ReviewsState(
             recipeModel: null,
@@ -22,6 +24,7 @@ class ReviewsBloc extends Bloc<ReviewsEvent, ReviewsState> {
 
   Future<void> _onLoad(ReviewsLoading event, Emitter<ReviewsState> emit) async {
     emit(state.copyWith(status: ReviewsStatus.loading));
+    emit(ReviewsState(recipeModel: null, status: ReviewsStatus.loading));
     final recipe = await _recipeRepo.fetchRecipeForReviews(event.recipeId);
     emit(state.copyWith(recipeModel: recipe, status: ReviewsStatus.idle));
   }

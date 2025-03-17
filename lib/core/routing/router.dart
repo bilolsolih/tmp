@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:recipe/core/routing/routes.dart';
 import 'package:recipe/data/repositories/category_repository.dart';
 import 'package:recipe/features/home/manager/home_events.dart';
-import 'package:recipe/features/reviews/managers/reviews_bloc.dart';
+import 'package:recipe/features/reviews/managers/create_review/create_review_bloc.dart';
+import 'package:recipe/features/reviews/managers/reviews/reviews_bloc.dart';
+import 'package:recipe/features/reviews/pages/create_review_view.dart';
 import 'package:recipe/features/reviews/pages/reviews_view.dart';
 
 import '../../features/categories/managers/categories_cubit.dart';
@@ -19,7 +21,7 @@ import '../../features/recipe_detail/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/pages/recipe_detail_view.dart';
 
 final router = GoRouter(
-  initialLocation: '/reviews/2',
+  initialLocation: Routes.getCreateReview(2),
   routes: [
     GoRoute(
       path: Routes.home,
@@ -72,9 +74,16 @@ final router = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => ReviewsBloc(
           recipeRepo: context.read(),
-          recipeId: 2,
+          recipeId: int.parse(state.pathParameters['recipeId']!),
         ),
         child: ReviewsView(),
+      ),
+    ),
+    GoRoute(
+      path: Routes.createReview,
+      builder: (context, state) => BlocProvider(
+        create: (context) => CreateReviewBloc(),
+        child: CreateReviewView(),
       ),
     ),
   ],

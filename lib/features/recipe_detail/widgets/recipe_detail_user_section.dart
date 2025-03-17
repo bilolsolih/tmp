@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipe/core/utils/colors.dart';
 import 'package:recipe/data/models/recipe/user_model_in_recipe.dart';
 
-import 'recipe_text_button_container.dart';
+import '../../common/widgets/recipe_text_button_container.dart';
 
 class RecipeDetailUserSection extends StatelessWidget {
   const RecipeDetailUserSection({

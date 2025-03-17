@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe/core/utils/colors.dart';
 import 'package:recipe/data/models/recipe/reviews_recipe_model.dart';
-import 'package:recipe/features/recipe_detail/widgets/recipe_text_button_container.dart';
-import 'package:recipe/features/reviews/pages/reviews_recipe_item_user.dart';
-import 'package:recipe/features/reviews/pages/reviews_recipe_rating_and_reviews.dart';
+import 'package:recipe/features/common/widgets/recipe_text_button_container.dart';
+
+import 'reviews_recipe_item_user.dart';
+import 'reviews_recipe_rating_and_reviews.dart';
 
 class ReviewsRecipeItem extends StatelessWidget {
   const ReviewsRecipeItem({
