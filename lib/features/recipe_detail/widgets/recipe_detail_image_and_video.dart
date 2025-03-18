@@ -25,7 +25,8 @@ class RecipeDetailImageAndVideo extends StatelessWidget {
             RecipeDetailTitleAndStats(
               title: recipe.title,
               rating: recipe.rating,
-              reviews: 2273,
+              reviews: recipe.reviewsCount,
+              recipeId: recipe.id,
             ),
             RecipeDetailImage(image: recipe.image),
             Positioned(

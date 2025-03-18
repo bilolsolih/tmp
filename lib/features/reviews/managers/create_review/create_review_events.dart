@@ -2,6 +2,12 @@ part of 'create_review_bloc.dart';
 
 sealed class CreateReviewEvent {}
 
+final class CreateReviewLoading extends CreateReviewEvent {
+  final int recipeId;
+
+  CreateReviewLoading({required this.recipeId});
+}
+
 final class CreateReviewLoad extends CreateReviewEvent {
   final int recipeId;
 
@@ -21,3 +27,5 @@ final class CreateReviewRecommendOrNot extends CreateReviewEvent {
 
   CreateReviewRecommendOrNot({required this.value});
 }
+
+final class CreateReviewSubmit extends CreateReviewEvent {}

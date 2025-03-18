@@ -2,8 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:recipe/core/routing/routes.dart';
-import 'package:recipe/data/repositories/category_repository.dart';
-import 'package:recipe/features/home/manager/home_events.dart';
 import 'package:recipe/features/reviews/managers/create_review/create_review_bloc.dart';
 import 'package:recipe/features/reviews/managers/reviews/reviews_bloc.dart';
 import 'package:recipe/features/reviews/pages/create_review_view.dart';
@@ -64,7 +62,7 @@ final router = GoRouter(
       builder: (context, state) => ChangeNotifierProvider(
         create: (context) => RecipeDetailViewModel(
           recipeRepo: context.read(),
-          recipeId: int.parse(state.pathParameters['recipeId']!), // casting
+          recipeId: int.parse(state.pathParameters['recipeId']!),
         ),
         child: RecipeDetailView(),
       ),
@@ -74,6 +72,7 @@ final router = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => ReviewsBloc(
           recipeRepo: context.read(),
+          reviewRepo: context.read(),
           recipeId: int.parse(state.pathParameters['recipeId']!),
         ),
         child: ReviewsView(),
@@ -82,7 +81,10 @@ final router = GoRouter(
     GoRoute(
       path: Routes.createReview,
       builder: (context, state) => BlocProvider(
-        create: (context) => CreateReviewBloc(),
+        create: (context) => CreateReviewBloc(
+          recipeRepo: context.read(),
+          reviewRepo: context.read(),
+        )..add(CreateReviewLoading(recipeId: int.parse(state.pathParameters['recipeId']!))),
         child: CreateReviewView(),
       ),
     ),

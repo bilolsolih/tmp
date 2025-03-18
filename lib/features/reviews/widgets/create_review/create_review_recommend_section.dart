@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/features/reviews/pages/create_review_recommend_section_option.dart';
+
+import 'create_review_recommend_section_option.dart';
 
 class CreateReviewRecommendSection extends StatelessWidget {
   const CreateReviewRecommendSection({

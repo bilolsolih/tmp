@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe/core/utils/colors.dart';
-import 'package:recipe/features/reviews/managers/create_review/create_review_bloc.dart';
-import 'package:recipe/features/reviews/managers/create_review/create_review_state.dart';
+import '../../managers/create_review/create_review_bloc.dart';
+import '../../managers/create_review/create_review_state.dart';
 
 class CreateReviewRecommendSectionOption extends StatelessWidget {
   const CreateReviewRecommendSectionOption({

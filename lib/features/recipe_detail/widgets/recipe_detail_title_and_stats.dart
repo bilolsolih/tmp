@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe/core/routing/routes.dart';
 import 'package:recipe/core/utils/colors.dart';
 
 import '../../common/widgets/recipe_rating.dart';
@@ -11,11 +13,13 @@ class RecipeDetailTitleAndStats extends StatelessWidget {
     required this.title,
     required this.rating,
     required this.reviews,
+    required this.recipeId,
   });
 
   final String title;
   final int reviews;
   final num rating;
+  final int recipeId;
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +53,9 @@ class RecipeDetailTitleAndStats extends StatelessWidget {
                   iconColor: Colors.white,
                   swap: true,
                 ),
-                RecipeReviews(
-                  reviews: reviews,
+                GestureDetector(
+                  onTap: () => context.go(Routes.getReviews(recipeId)),
+                  child: RecipeReviews(reviews: reviews),
                 ),
               ],
             ),

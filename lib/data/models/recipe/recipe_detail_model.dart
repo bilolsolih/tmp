@@ -9,6 +9,7 @@ class RecipeDetailModel {
   final String image, videoRecipe;
 
   final int timeRequired;
+  final int reviewsCount;
   final num rating;
   final UserModelInRecipe user;
   final List<IngredientModel> ingredients;
@@ -22,6 +23,7 @@ class RecipeDetailModel {
     required this.image,
     required this.videoRecipe,
     required this.timeRequired,
+    required this.reviewsCount,
     required this.rating,
     required this.user,
     required this.ingredients,
@@ -37,6 +39,7 @@ class RecipeDetailModel {
       image: json['photo'],
       videoRecipe: json['videoRecipe'],
       timeRequired: json['timeRequired'],
+      reviewsCount: json['reviewsCount'],
       rating: json['rating'],
       user: UserModelInRecipe.fromJson(json['user']),
       ingredients: (json['ingredients'] as List<dynamic>).map((ingredient) => IngredientModel.fromJson(ingredient)).toList(),

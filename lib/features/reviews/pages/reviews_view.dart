@@ -18,12 +18,14 @@ class ReviewsView extends StatelessWidget {
         builder: (context, state) {
           return switch (state.status) {
             ReviewsStatus.loading => Center(child: CircularProgressIndicator()),
-            ReviewsStatus.error =>
-              Center(child: Text("Something went wrong...")),
-            ReviewsStatus.idle => ListView(
-                padding: EdgeInsets.only(bottom: 100),
+            ReviewsStatus.error => Center(child: Text("Something went wrong...")),
+            ReviewsStatus.idle => Column(
                 children: [
                   ReviewsRecipeItem(recipe: state.recipeModel!),
+                  Expanded(
+                    child: ListView(),
+                  ),
+                  SizedBox(height: 100),
                 ],
               ),
           };

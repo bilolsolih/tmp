@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
+
 class CreateReviewModel {
   final int recipeId;
   final String comment;
@@ -15,13 +17,13 @@ class CreateReviewModel {
     this.photo,
   });
 
-  Map<String, dynamic> toJson() {
+  Future<Map<String, dynamic>> toJson() async {
     return {
       "recipeId": recipeId,
       "comment": comment,
       "rating": rating,
       "recommend": recommend,
-      "image": photo,
+      "image": photo != null ? await MultipartFile.fromFile(photo!.path, filename: photo!.path.split('/').last) : null,
     };
   }
 }
