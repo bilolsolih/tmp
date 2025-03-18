@@ -19,7 +19,7 @@ import '../../features/recipe_detail/manager/recipe_detail_view_model.dart';
 import '../../features/recipe_detail/pages/recipe_detail_view.dart';
 
 final router = GoRouter(
-  initialLocation: Routes.getCreateReview(2),
+  initialLocation: Routes.categories,
   routes: [
     GoRoute(
       path: Routes.home,

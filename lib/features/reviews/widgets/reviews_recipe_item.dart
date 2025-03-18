@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:recipe/core/routing/routes.dart';
 import 'package:recipe/core/utils/colors.dart';
 import 'package:recipe/data/models/recipe/reviews_recipe_model.dart';
 import 'package:recipe/features/common/widgets/recipe_text_button_container.dart';
@@ -63,7 +65,7 @@ class ReviewsRecipeItem extends StatelessWidget {
                 containerWidth: 126.w,
                 containerHeight: 24.h,
                 containerPaddingH: 10,
-                callback: () {},
+                callback: () => context.push(Routes.getCreateReview(recipe.id)),
               ),
             ],
           ),
