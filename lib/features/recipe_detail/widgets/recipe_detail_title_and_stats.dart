@@ -54,7 +54,7 @@ class RecipeDetailTitleAndStats extends StatelessWidget {
                   swap: true,
                 ),
                 GestureDetector(
-                  onTap: () => context.go(Routes.getReviews(recipeId)),
+                  onTap: () => context.push(Routes.getReviews(recipeId)),
                   child: RecipeReviews(reviews: reviews),
                 ),
               ],

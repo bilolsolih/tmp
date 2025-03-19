@@ -10,7 +10,7 @@ class CategoryRepository {
   List<CategoryModel> categories = [];
 
   Future<List<CategoryModel>> fetchCategories() async {
-    final rawCategories = await client.fetchCategories();
+    final rawCategories = await client.genericGetRequest<List<dynamic>>('/categories/list');
     categories = rawCategories.map((category) => CategoryModel.fromJson(category)).toList();
     return categories;
   }

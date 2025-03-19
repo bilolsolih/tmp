@@ -4,7 +4,7 @@ import 'package:recipe/data/models/create_review_model.dart';
 class ApiClient {
   final Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'http://10.10.3.16:8888/api/v1',
+      baseUrl: 'http://10.10.0.138:8888/api/v1',
       validateStatus: (status) => true,
     ),
   );
@@ -34,16 +34,6 @@ class ApiClient {
       return true;
     } else {
       return false;
-    }
-  }
-
-  Future<List<dynamic>> fetchCategories() async {
-    var response = await dio.get('/categories/list');
-    if (response.statusCode == 200) {
-      List<dynamic> data = response.data;
-      return data;
-    } else {
-      throw Exception("/categories/list so'rovimiz o'xshamadi!");
     }
   }
 

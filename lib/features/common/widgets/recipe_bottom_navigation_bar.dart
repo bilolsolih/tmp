@@ -10,58 +10,53 @@ class RecipeBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return Stack(
       alignment: Alignment.bottomCenter,
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          Container(
-            width: double.infinity,
-            height: 128,
+      children: [
+        Container(
+          width: double.infinity,
+          height: 128,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.beigeColor, Colors.transparent],
+              begin: Alignment.bottomCenter,
+              end: Alignment.topCenter,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(bottom: 36),
+          child: Container(
+            width: 280,
+            height: 56,
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [AppColors.beigeColor, Colors.transparent],
-                begin: Alignment.bottomCenter,
-                end: Alignment.topCenter,
-              ),
+              color: AppColors.redPinkMain,
+              borderRadius: BorderRadius.circular(33),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                RecipeIconButton(
+                  image: "assets/icons/home.svg",
+                  callback: () => context.go(Routes.home),
+                ),
+                RecipeIconButton(
+                  image: "assets/icons/community.svg",
+                  callback: () => context.go(Routes.community),
+                ),
+                RecipeIconButton(
+                  image: "assets/icons/categories.svg",
+                  callback: () => context.go(Routes.categories),
+                ),
+                RecipeIconButton(
+                  image: "assets/icons/profile.svg",
+                  callback: () {},
+                ),
+              ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 36),
-            child: Container(
-              width: 280,
-              height: 56,
-              decoration: BoxDecoration(
-                color: AppColors.redPinkMain,
-                borderRadius: BorderRadius.circular(33),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  RecipeIconButton(
-                    image: "assets/icons/home.svg",
-                    callback: ()=> context.go(Routes.home),
-                  ),
-                  RecipeIconButton(
-                    image: "assets/icons/community.svg",
-                    callback: () => context.go(Routes.community),
-                  ),
-                  RecipeIconButton(
-                    image: "assets/icons/categories.svg",
-                    callback: () {
-                      context.go(Routes.categories);
-                    },
-                  ),
-                  RecipeIconButton(
-                    image: "assets/icons/profile.svg",
-                    callback: () {},
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
