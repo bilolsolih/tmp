@@ -21,6 +21,7 @@ class ChefRepository {
   }
 
   Future<List<TopChefModel>> fetchMostViewedChefs() async {
+    await Future.delayed(Duration(seconds: 10));
     var rawMostViewedChefs = await client.genericGetRequest<List<dynamic>>(
       '/top-chefs/list',
       queryParams: {"Order": "Date", "Limit": 2, "Descending": false},
@@ -30,6 +31,7 @@ class ChefRepository {
   }
 
   Future<List<TopChefModel>> fetchMostLikedChefs() async {
+    await Future.delayed(Duration(seconds: 10));
     var rawMostLikedChefs = await client.genericGetRequest<List<dynamic>>(
       '/top-chefs/list',
       queryParams: {"Limit": 2},
@@ -39,6 +41,7 @@ class ChefRepository {
   }
 
   Future<List<TopChefModel>> fetchNewChefs() async {
+    await Future.delayed(Duration(seconds: 10));
     var rawNewChefs = await client.genericGetRequest<List<dynamic>>(
       '/top-chefs/list',
       queryParams: {"Order": "Date", "Limit": 2},

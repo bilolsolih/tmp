@@ -23,11 +23,22 @@ class TopChefsBloc extends Bloc<TopChefsEvent, TopChefsState> {
       ),
     );
 
-    final mostViewedChefs = await _chefRepo.fetchMostViewedChefs();
-    emit(state.copyWith(mostViewedChefs: mostViewedChefs, mostViewedChefsStatus: TopChefsStatus.success));
-    final mostLikedChefs = await _chefRepo.fetchMostLikedChefs();
-    emit(state.copyWith(mostLikedChefs: mostLikedChefs, mostLikedChefsStatus: TopChefsStatus.success));
-    final newChefs = await _chefRepo.fetchNewChefs();
-    emit(state.copyWith(newChefs: newChefs, newChefsStatus: TopChefsStatus.success));
+    var req1 = _chefRepo.fetchMostViewedChefs().then(
+      (value) {
+        emit(state.copyWith(mostViewedChefs: value, mostViewedChefsStatus: TopChefsStatus.success));
+      },
+    );
+    var req2 = _chefRepo.fetchMostLikedChefs().then(
+          (value) => emit(
+            state.copyWith(mostLikedChefs: value, mostLikedChefsStatus: TopChefsStatus.success),
+          ),
+        );
+    var req3 = _chefRepo.fetchNewChefs().then(
+          (value) => emit(
+            state.copyWith(newChefs: value, newChefsStatus: TopChefsStatus.success),
+          ),
+        );
+
+    await Future.wait([req1, req2, req3]);
   }
 }

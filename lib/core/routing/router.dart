@@ -6,6 +6,7 @@ import 'package:recipe/features/reviews/managers/create_review/create_review_blo
 import 'package:recipe/features/reviews/managers/reviews/reviews_bloc.dart';
 import 'package:recipe/features/reviews/pages/create_review_view.dart';
 import 'package:recipe/features/reviews/pages/reviews_view.dart';
+import 'package:recipe/features/top_chefs/managers/top_chefs_bloc.dart';
 import 'package:recipe/features/top_chefs/pages/top_chefs_view.dart';
 
 import '../../features/categories/managers/categories_cubit.dart';
@@ -91,7 +92,12 @@ final router = GoRouter(
     ),
     GoRoute(
       path: Routes.topChefs,
-      builder: (context, state) => TopChefsView(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => TopChefsBloc(
+          chefRepo: context.read(),
+        ),
+        child: TopChefsView(),
+      ),
     ),
   ],
 );
