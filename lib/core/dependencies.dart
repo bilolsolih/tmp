@@ -4,12 +4,16 @@ import 'package:recipe/data/repositories/chef_repository.dart';
 import 'package:recipe/data/repositories/review_repository.dart';
 
 import '../data/repositories/category_repository.dart';
+import '../data/repositories/onboarding_repositories.dart';
 import '../data/repositories/recipe_repository.dart';
 import 'client.dart';
 
 final List<SingleChildWidget> providers = [
   Provider(
     create: (context) => ApiClient(),
+  ),
+  Provider(
+    create: (context) => OnboardingRepository(client: context.read()),
   ),
   Provider(
     create: (context) => CategoryRepository(client: context.read()),

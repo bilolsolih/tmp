@@ -1,4 +1,8 @@
 class Routes {
+  static const signUp = '/signup';
+  static const complete = '/complete';
+  static const onboarding = '/onboarding';
+  static const String login = '/login';
   static const String home = '/home';
   static const String categories = '/categories';
   static const String categoryDetail = '/category-detail/:categoryId'; //categoryId pathParam bilan ham ko'rsatish
@@ -7,6 +11,7 @@ class Routes {
   static const String reviews = '/reviews/:recipeId';
   static const String createReview = '/create-review/:recipeId';
   static const String topChefs = '/top-chefs';
+  static const String recipeCreate = '/recipe-create';
 
   static String getRecipeDetail(int recipeId) => '/recipe-detail/$recipeId';
 

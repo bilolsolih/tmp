@@ -18,9 +18,6 @@ class RecipeIconButton extends StatelessWidget {
     return SizedBox.fromSize(
       size: size,
       child: IconButton(
-        style: IconButton.styleFrom(
-          tapTargetSize: MaterialTapTargetSize.padded,
-        ),
         onPressed: callback,
         padding: EdgeInsets.zero,
         icon: SvgPicture.asset(image),

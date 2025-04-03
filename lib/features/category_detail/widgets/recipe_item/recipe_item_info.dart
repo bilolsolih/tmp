@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe/core/utils/colors.dart';
 import 'package:recipe/data/models/recipe/recipe_model.dart';
 import 'package:recipe/features/category_detail/widgets/recipe_item/recipe_item_description.dart';
@@ -18,8 +19,8 @@ class RecipeItemInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 158.5,
-      height: 76,
+      width: 158.5.w,
+      height: 76.h,
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       decoration: BoxDecoration(
         color: Colors.white,

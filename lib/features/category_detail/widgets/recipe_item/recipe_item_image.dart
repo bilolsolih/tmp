@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:recipe/core/utils/colors.dart';
 import 'package:recipe/data/models/recipe/recipe_model.dart';
 
@@ -16,8 +17,8 @@ class RecipeItemImage extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Container(
-        width: 169,
-        height: 153,
+        width: 169.w,
+        height: 153.h,
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
